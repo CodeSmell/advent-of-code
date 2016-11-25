@@ -13,6 +13,8 @@ end
 
 #
 # capture the input
+# expects a series of ( and ) characters
+# terminating with the enter key
 #
 def getTheInput()
   print('Enter the directions:')
@@ -21,7 +23,7 @@ def getTheInput()
 end
 
 #
-# capture the input
+# process the directions
 #
 def processTheDirections(directions)
   basementCharacter = 0
