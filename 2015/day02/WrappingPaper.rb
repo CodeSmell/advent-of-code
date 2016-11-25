@@ -17,7 +17,7 @@ end
 ## Ribbon and Bow
 ##
 def perimeter(s1, s2)
-  return s1 + s1 + s2 + s2 
+  return s1 + s1 + s2 + s2
 end
 
 def volume(l, w, h)
@@ -28,7 +28,7 @@ def smallestPerimeter(l, w, h)
   return [perimeter(l,w), perimeter(w,h), perimeter(l,h)].min
 end
 
-def ribbonNeededForPresent(l,w,h) 
+def ribbonNeededForPresent(l,w,h)
   return smallestPerimeter(l,w,h) + volume(l,w,h)
 end
 
@@ -51,7 +51,8 @@ $stdin.each do |present|
   # then convert each measurement to an integer
   measurements = present.split("x").map {|measurement| measurement.to_i}
 
-  if measurements.length == 3
+  # let's make sure we have 3 measurements for the present
+  if measurements.size == 3
     totalPaperNeeded += paperNeededForPresent(measurements[0], measurements[1], measurements[2])
     totalRibbonNeeded += ribbonNeededForPresent(measurements[0], measurements[1], measurements[2])
   end
