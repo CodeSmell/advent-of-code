@@ -37,6 +37,7 @@ end
 # expecting each line to be one present
 # in the format 2x3x4
 #
+print("Enter presents:")
 totalPaperNeeded = 0;
 totalRibbonNeeded = 0;
 $stdin.each do |present|
