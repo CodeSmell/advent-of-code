@@ -24,7 +24,7 @@ def visit(char, currLocation)
   newLocation = nil
   if char == '^'
     newLocation = Location.new(currLocation.x, currLocation.y + 1)
-  elsif char == 'v'
+  elsif char == 'v' || char == 'V'
     newLocation = Location.new(currLocation.x, currLocation.y - 1)
   elsif char == '<'
     newLocation = Location.new(currLocation.x - 1, currLocation.y)
@@ -45,8 +45,9 @@ def processTheDirections(directions, visitedLocations)
   # get a new location
   # and mark it as visited
   for i in 0..directions.length - 1
-    currentLocation = visit(directions[i], currentLocation)
-    if !currentLocation.nil?
+    tempLocation = visit(directions[i], currentLocation)
+    if !tempLocation.nil?
+      currentLocation = tempLocation
       visitedLocations[currentLocation.asString()]=true
     end
   end
