@@ -34,6 +34,15 @@ def visit(char, currLocation)
   return newLocation
 end
 
+def processTheInstruction(instruction, currLocation, visitedLocations)
+  tempLocation = visit(instruction, currLocation)
+  if !tempLocation.nil?
+    currLocation = tempLocation
+    visitedLocations[currLocation.asString()]=true
+  end
+  return currLocation
+end
+
 #
 # process the directions
 #
@@ -45,10 +54,27 @@ def processTheDirections(directions, visitedLocations)
   # get a new location
   # and mark it as visited
   for i in 0..directions.length - 1
-    tempLocation = visit(directions[i], currentLocation)
-    if !tempLocation.nil?
-      currentLocation = tempLocation
-      visitedLocations[currentLocation.asString()]=true
+    currentLocation = processTheInstruction(directions[i], currentLocation, visitedLocations)
+  end
+end
+
+def processTheDirectionsPart2(directions, visitedLocations)
+  # both Santa and Robo Santa starting @ same location
+  currentSantaLocation = Location.new(0,0)
+  currentRoboLocation = Location.new(0,0)
+
+  visitedLocations[currentSantaLocation.asString()]=true
+
+  # for each directional character
+  # get a new location
+  # and mark it as visited
+  for i in 0..directions.length - 1
+    if i % 2 == 0
+      # Santa
+      currentSantaLocation = processTheInstruction(directions[i], currentSantaLocation, visitedLocations)
+    else
+      # Robo
+      currentRoboLocation = processTheInstruction(directions[i], currentRoboLocation, visitedLocations)
     end
   end
 end
@@ -64,5 +90,6 @@ directions = gets().chomp
 # process the directions
 #
 visitedLocations = Hash.new
-processTheDirections(directions, visitedLocations)
+#processTheDirections(directions, visitedLocations)
+processTheDirectionsPart2(directions, visitedLocations)
 puts "Visited #{visitedLocations.keys.size} homes"
