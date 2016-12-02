@@ -44,6 +44,7 @@ end
 # return the location where you are after moving the
 # specified number of blocks in the direction you are facing
 # but keep track of all the locations you pass along the way
+# and stop if you visited a location more than once
 def advanceToNextLocationVisitAll(currLocation, currFacing, numBlocks, visitedLocations)
   nextLocation = currLocation
   for i in 1..numBlocks
@@ -108,6 +109,6 @@ directions = gets().chomp.split(/\s*,\s*/)
 # starting position
 currFacing = "N"
 startingLocation = Location.new(0,0)
-endingLocation = processDirections(currFacing, startingLocation, directions, true)
+endingLocation = processDirections(currFacing, startingLocation, directions, false)
 distance = startingLocation.taxiCabDistance(endingLocation)
 puts("taxicab distance to HQ is #{distance} blocks")
