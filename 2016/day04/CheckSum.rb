@@ -66,7 +66,7 @@ $stdin.each do |user_input|
   obj = RoomName.new(user_input)
   # part 1
   total = total + (obj.isValid? ? obj.seqNumber : 0)
-  # part 
+  # part 2
   northPoleSeqNum = (obj.isValid? && obj.decrypt.include?("northpole")) ? obj.seqNumber : northPoleSeqNum
 end
 puts("the sequence number total: #{total}")
