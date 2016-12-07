@@ -1,3 +1,8 @@
+#
+# initially collects data using the letter as the key
+# with an array that counts occurrences based on the position
+# that the letter was found
+#
 $alpha = Hash.new
 
 def processTheNoise(line)
