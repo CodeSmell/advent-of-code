@@ -16,12 +16,7 @@ def processTheNoise(line)
 end
 
 def determineTheSignal
-  # TODO can we do this without looping over the keys?
-  phrase = ""
-  $h.keys.each do |k|
-    phrase = phrase + ($h[k].sort_by{|k,v| -v}.to_h.keys.first)
-  end
-  return phrase
+  return $h.collect{|k,v| v.sort_by{|k,v| -v}.to_h.keys.first}.join
 end
 
 print('Enter the values:')
