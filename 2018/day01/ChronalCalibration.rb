@@ -1,3 +1,4 @@
+require 'set'
 #
 # Star 2
 #
@@ -5,17 +6,17 @@ def whatIsTheRepeatedFrequency(values)
   # starting frequency
   currentFrequency = 0
   
-  # tracking found frequencies
+  # tracking found frequencies in set
   # we count the starting frequency
-  foundFrequencies = { currentFrequency => currentFrequency }
+  foundFrequencies = Set[0]
   
   index = 0
   loop do 
     currentFrequency += values[index].chomp.to_i
-    break if !foundFrequencies[currentFrequency].nil?
+    break if foundFrequencies.include?(currentFrequency)
     
     # add the found frequency
-    foundFrequencies[currentFrequency] = currentFrequency
+    foundFrequencies << currentFrequency
     
     # handle the index
     index = (index+1 > values.length-1) ? 0 : index+1
