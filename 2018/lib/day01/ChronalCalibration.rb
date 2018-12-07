@@ -38,7 +38,7 @@ end
 
 
 
-driftFileName = "2018/day01/star1.txt"
+driftFileName = "star2.testData2_eol.txt"
 # read every line in the file into an array
 lines = IO.readlines(driftFileName)
 
